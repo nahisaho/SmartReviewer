@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY sr "http://smartreviewer.example.org/ontology#" >
+]>
+<rdf:RDF xmlns="http://smartreviewer.example.org/ontology#"
+     xml:base="http://smartreviewer.example.org/ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sr="http://smartreviewer.example.org/ontology#">
+    
+    <!-- ============================================ -->
+    <!-- Ontology Declaration -->
+    <!-- ============================================ -->
+    <owl:Ontology rdf:about="http://smartreviewer.example.org/ontology">
+        <rdfs:label xml:lang="ja">SmartReviewer 基本設計書オントロジー</rdfs:label>
+        <rdfs:comment xml:lang="ja">政府情報システムの基本設計書をレビューするためのドメインオントロジー</rdfs:comment>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- ============================================ -->
+    <!-- Classes - Document Structure -->
+    <!-- ============================================ -->
+    
+    <owl:Class rdf:about="&sr;Document">
+        <rdfs:label xml:lang="ja">文書</rdfs:label>
+        <rdfs:comment xml:lang="ja">レビュー対象の文書</rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;BasicDesignDocument">
+        <rdfs:subClassOf rdf:resource="&sr;Document"/>
+        <rdfs:label xml:lang="ja">基本設計書</rdfs:label>
+        <rdfs:comment xml:lang="ja">システムの基本設計を記述した文書</rdfs:comment>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;Section">
+        <rdfs:label xml:lang="ja">セクション</rdfs:label>
+        <rdfs:comment xml:lang="ja">文書内の章・節</rdfs:comment>
+    </owl:Class>
+
+    <!-- ============================================ -->
+    <!-- Classes - Design Components -->
+    <!-- ============================================ -->
+    
+    <owl:Class rdf:about="&sr;DesignComponent">
+        <rdfs:label xml:lang="ja">設計要素</rdfs:label>
+        <rdfs:comment xml:lang="ja">基本設計書に含まれる設計要素の抽象クラス</rdfs:comment>
+    </owl:Class>
+    
+    <!-- システム概要 -->
+    <owl:Class rdf:about="&sr;SystemOverview">
+        <rdfs:subClassOf rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">システム概要</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;SystemObjective">
+        <rdfs:subClassOf rdf:resource="&sr;SystemOverview"/>
+        <rdfs:label xml:lang="ja">システム目的</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;SystemScope">
+        <rdfs:subClassOf rdf:resource="&sr;SystemOverview"/>
+        <rdfs:label xml:lang="ja">システム範囲</rdfs:label>
+    </owl:Class>
+    
+    <!-- アーキテクチャ設計 -->
+    <owl:Class rdf:about="&sr;Architecture">
+        <rdfs:subClassOf rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">アーキテクチャ</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;SystemArchitecture">
+        <rdfs:subClassOf rdf:resource="&sr;Architecture"/>
+        <rdfs:label xml:lang="ja">システム構成</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;NetworkArchitecture">
+        <rdfs:subClassOf rdf:resource="&sr;Architecture"/>
+        <rdfs:label xml:lang="ja">ネットワーク構成</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;SoftwareArchitecture">
+        <rdfs:subClassOf rdf:resource="&sr;Architecture"/>
+        <rdfs:label xml:lang="ja">ソフトウェア構成</rdfs:label>
+    </owl:Class>
+    
+    <!-- 機能設計 -->
+    <owl:Class rdf:about="&sr;FunctionalDesign">
+        <rdfs:subClassOf rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">機能設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;Function">
+        <rdfs:subClassOf rdf:resource="&sr;FunctionalDesign"/>
+        <rdfs:label xml:lang="ja">機能</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;UseCase">
+        <rdfs:subClassOf rdf:resource="&sr;FunctionalDesign"/>
+        <rdfs:label xml:lang="ja">ユースケース</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;ScreenDesign">
+        <rdfs:subClassOf rdf:resource="&sr;FunctionalDesign"/>
+        <rdfs:label xml:lang="ja">画面設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;ReportDesign">
+        <rdfs:subClassOf rdf:resource="&sr;FunctionalDesign"/>
+        <rdfs:label xml:lang="ja">帳票設計</rdfs:label>
+    </owl:Class>
+    
+    <!-- データ設計 -->
+    <owl:Class rdf:about="&sr;DataDesign">
+        <rdfs:subClassOf rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">データ設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;DataModel">
+        <rdfs:subClassOf rdf:resource="&sr;DataDesign"/>
+        <rdfs:label xml:lang="ja">データモデル</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;Entity">
+        <rdfs:subClassOf rdf:resource="&sr;DataDesign"/>
+        <rdfs:label xml:lang="ja">エンティティ</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;DataDictionary">
+        <rdfs:subClassOf rdf:resource="&sr;DataDesign"/>
+        <rdfs:label xml:lang="ja">データ項目定義</rdfs:label>
+    </owl:Class>
+    
+    <!-- インターフェース設計 -->
+    <owl:Class rdf:about="&sr;InterfaceDesign">
+        <rdfs:subClassOf rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">インターフェース設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;ExternalInterface">
+        <rdfs:subClassOf rdf:resource="&sr;InterfaceDesign"/>
+        <rdfs:label xml:lang="ja">外部インターフェース</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;APIDesign">
+        <rdfs:subClassOf rdf:resource="&sr;InterfaceDesign"/>
+        <rdfs:label xml:lang="ja">API設計</rdfs:label>
+    </owl:Class>
+    
+    <!-- 非機能設計 -->
+    <owl:Class rdf:about="&sr;NonFunctionalDesign">
+        <rdfs:subClassOf rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">非機能設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;PerformanceDesign">
+        <rdfs:subClassOf rdf:resource="&sr;NonFunctionalDesign"/>
+        <rdfs:label xml:lang="ja">性能設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;AvailabilityDesign">
+        <rdfs:subClassOf rdf:resource="&sr;NonFunctionalDesign"/>
+        <rdfs:label xml:lang="ja">可用性設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;SecurityDesign">
+        <rdfs:subClassOf rdf:resource="&sr;NonFunctionalDesign"/>
+        <rdfs:label xml:lang="ja">セキュリティ設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;ScalabilityDesign">
+        <rdfs:subClassOf rdf:resource="&sr;NonFunctionalDesign"/>
+        <rdfs:label xml:lang="ja">拡張性設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;MaintainabilityDesign">
+        <rdfs:subClassOf rdf:resource="&sr;NonFunctionalDesign"/>
+        <rdfs:label xml:lang="ja">保守性設計</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;OperabilityDesign">
+        <rdfs:subClassOf rdf:resource="&sr;NonFunctionalDesign"/>
+        <rdfs:label xml:lang="ja">運用性設計</rdfs:label>
+    </owl:Class>
+
+    <!-- ============================================ -->
+    <!-- Classes - Requirements -->
+    <!-- ============================================ -->
+    
+    <owl:Class rdf:about="&sr;Requirement">
+        <rdfs:label xml:lang="ja">要件</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;FunctionalRequirement">
+        <rdfs:subClassOf rdf:resource="&sr;Requirement"/>
+        <rdfs:label xml:lang="ja">機能要件</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;NonFunctionalRequirement">
+        <rdfs:subClassOf rdf:resource="&sr;Requirement"/>
+        <rdfs:label xml:lang="ja">非機能要件</rdfs:label>
+    </owl:Class>
+
+    <!-- ============================================ -->
+    <!-- Classes - Guidelines -->
+    <!-- ============================================ -->
+    
+    <owl:Class rdf:about="&sr;Guideline">
+        <rdfs:label xml:lang="ja">ガイドライン</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;GuidelineSection">
+        <rdfs:label xml:lang="ja">ガイドラインセクション</rdfs:label>
+    </owl:Class>
+
+    <!-- ============================================ -->
+    <!-- Classes - Check Items -->
+    <!-- ============================================ -->
+    
+    <owl:Class rdf:about="&sr;CheckItem">
+        <rdfs:label xml:lang="ja">チェック項目</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;StructureCheck">
+        <rdfs:subClassOf rdf:resource="&sr;CheckItem"/>
+        <rdfs:label xml:lang="ja">構成チェック</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;CompletenessCheck">
+        <rdfs:subClassOf rdf:resource="&sr;CheckItem"/>
+        <rdfs:label xml:lang="ja">網羅性チェック</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;QualityCheck">
+        <rdfs:subClassOf rdf:resource="&sr;CheckItem"/>
+        <rdfs:label xml:lang="ja">品質チェック</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&sr;GuidelineCheck">
+        <rdfs:subClassOf rdf:resource="&sr;CheckItem"/>
+        <rdfs:label xml:lang="ja">ガイドライン準拠チェック</rdfs:label>
+    </owl:Class>
+
+    <!-- ============================================ -->
+    <!-- Object Properties -->
+    <!-- ============================================ -->
+    
+    <owl:ObjectProperty rdf:about="&sr;hasSection">
+        <rdfs:domain rdf:resource="&sr;Document"/>
+        <rdfs:range rdf:resource="&sr;Section"/>
+        <rdfs:label xml:lang="ja">セクションを持つ</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&sr;containsComponent">
+        <rdfs:domain rdf:resource="&sr;Section"/>
+        <rdfs:range rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">設計要素を含む</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&sr;realizesRequirement">
+        <rdfs:domain rdf:resource="&sr;DesignComponent"/>
+        <rdfs:range rdf:resource="&sr;Requirement"/>
+        <rdfs:label xml:lang="ja">要件を実現する</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&sr;referencesGuideline">
+        <rdfs:domain rdf:resource="&sr;DesignComponent"/>
+        <rdfs:range rdf:resource="&sr;GuidelineSection"/>
+        <rdfs:label xml:lang="ja">ガイドラインを参照する</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&sr;appliesTo">
+        <rdfs:domain rdf:resource="&sr;CheckItem"/>
+        <rdfs:range rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">適用対象</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&sr;dependsOn">
+        <rdfs:domain rdf:resource="&sr;DesignComponent"/>
+        <rdfs:range rdf:resource="&sr;DesignComponent"/>
+        <rdfs:label xml:lang="ja">依存する</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&sr;followsSection">
+        <rdfs:domain rdf:resource="&sr;Section"/>
+        <rdfs:range rdf:resource="&sr;Section"/>
+        <rdfs:label xml:lang="ja">次のセクション</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- ============================================ -->
+    <!-- Data Properties -->
+    <!-- ============================================ -->
+    
+    <owl:DatatypeProperty rdf:about="&sr;sectionNumber">
+        <rdfs:domain rdf:resource="&sr;Section"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="ja">セクション番号</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&sr;title">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="ja">タイトル</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&sr;description">
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="ja">説明</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&sr;isRequired">
+        <rdfs:domain rdf:resource="&sr;DesignComponent"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+        <rdfs:label xml:lang="ja">必須項目</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&sr;checkItemId">
+        <rdfs:domain rdf:resource="&sr;CheckItem"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="ja">チェック項目ID</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&sr;severity">
+        <rdfs:domain rdf:resource="&sr;CheckItem"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:label xml:lang="ja">重要度</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <!-- ============================================ -->
+    <!-- Individuals - Required Sections -->
+    <!-- ============================================ -->
+    
+    <owl:NamedIndividual rdf:about="&sr;RequiredSection_Overview">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>1</sr:sectionNumber>
+        <sr:title xml:lang="ja">概要</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&sr;RequiredSection_SystemArchitecture">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>2</sr:sectionNumber>
+        <sr:title xml:lang="ja">システム構成</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&sr;RequiredSection_FunctionalDesign">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>3</sr:sectionNumber>
+        <sr:title xml:lang="ja">機能設計</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&sr;RequiredSection_DataDesign">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>4</sr:sectionNumber>
+        <sr:title xml:lang="ja">データ設計</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&sr;RequiredSection_InterfaceDesign">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>5</sr:sectionNumber>
+        <sr:title xml:lang="ja">インターフェース設計</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&sr;RequiredSection_NonFunctionalDesign">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>6</sr:sectionNumber>
+        <sr:title xml:lang="ja">非機能設計</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

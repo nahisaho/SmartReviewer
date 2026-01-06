@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY sr "http://smartreviewer.example.org/ontology#" >
+    <!ENTITY tp "http://smartreviewer.example.org/ontology/testplan#" >
+]>
+<rdf:RDF xmlns="http://smartreviewer.example.org/ontology/testplan#"
+     xml:base="http://smartreviewer.example.org/ontology/testplan"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sr="http://smartreviewer.example.org/ontology#"
+     xmlns:tp="http://smartreviewer.example.org/ontology/testplan#">
+    
+    <!-- ============================================ -->
+    <!-- Ontology Declaration -->
+    <!-- ============================================ -->
+    <owl:Ontology rdf:about="http://smartreviewer.example.org/ontology/testplan">
+        <rdfs:label xml:lang="ja">SmartReviewer 全体テスト計画書オントロジー</rdfs:label>
+        <rdfs:comment xml:lang="ja">政府情報システムの全体テスト計画書をレビューするためのドメインオントロジー</rdfs:comment>
+        <owl:versionInfo>1.0.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://smartreviewer.example.org/ontology"/>
+    </owl:Ontology>
+
+    <!-- ============================================ -->
+    <!-- Classes - Document -->
+    <!-- ============================================ -->
+    
+    <owl:Class rdf:about="&tp;TestPlanDocument">
+        <rdfs:subClassOf rdf:resource="&sr;Document"/>
+        <rdfs:label xml:lang="ja">全体テスト計画書</rdfs:label>
+        <rdfs:comment xml:lang="ja">テスト全体の計画を記述した文書</rdfs:comment>
+    </owl:Class>
+
+    <!-- ============================================ -->
+    <!-- Classes - Test Plan Components -->
+    <!-- ============================================ -->
+    
+    <owl:Class rdf:about="&tp;TestPlanComponent">
+        <rdfs:label xml:lang="ja">テスト計画要素</rdfs:label>
+        <rdfs:comment xml:lang="ja">テスト計画書に含まれる要素の抽象クラス</rdfs:comment>
+    </owl:Class>
+    
+    <!-- テスト方針 -->
+    <owl:Class rdf:about="&tp;TestPolicy">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テスト方針</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestObjective">
+        <rdfs:subClassOf rdf:resource="&tp;TestPolicy"/>
+        <rdfs:label xml:lang="ja">テスト目的</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestApproach">
+        <rdfs:subClassOf rdf:resource="&tp;TestPolicy"/>
+        <rdfs:label xml:lang="ja">テストアプローチ</rdfs:label>
+    </owl:Class>
+    
+    <!-- テストレベル -->
+    <owl:Class rdf:about="&tp;TestLevel">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テストレベル</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;UnitTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestLevel"/>
+        <rdfs:label xml:lang="ja">単体テスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;IntegrationTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestLevel"/>
+        <rdfs:label xml:lang="ja">結合テスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;SystemTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestLevel"/>
+        <rdfs:label xml:lang="ja">システムテスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;AcceptanceTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestLevel"/>
+        <rdfs:label xml:lang="ja">受入テスト</rdfs:label>
+    </owl:Class>
+    
+    <!-- テスト種別 -->
+    <owl:Class rdf:about="&tp;TestType">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テスト種別</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;FunctionalTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestType"/>
+        <rdfs:label xml:lang="ja">機能テスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;PerformanceTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestType"/>
+        <rdfs:label xml:lang="ja">性能テスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;SecurityTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestType"/>
+        <rdfs:label xml:lang="ja">セキュリティテスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;UsabilityTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestType"/>
+        <rdfs:label xml:lang="ja">ユーザビリティテスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;AccessibilityTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestType"/>
+        <rdfs:label xml:lang="ja">アクセシビリティテスト</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;RegressionTest">
+        <rdfs:subClassOf rdf:resource="&tp;TestType"/>
+        <rdfs:label xml:lang="ja">回帰テスト</rdfs:label>
+    </owl:Class>
+    
+    <!-- テストスコープ -->
+    <owl:Class rdf:about="&tp;TestScope">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テストスコープ</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;InScopeItem">
+        <rdfs:subClassOf rdf:resource="&tp;TestScope"/>
+        <rdfs:label xml:lang="ja">対象範囲</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;OutOfScopeItem">
+        <rdfs:subClassOf rdf:resource="&tp;TestScope"/>
+        <rdfs:label xml:lang="ja">対象外範囲</rdfs:label>
+    </owl:Class>
+    
+    <!-- テスト基準 -->
+    <owl:Class rdf:about="&tp;TestCriteria">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テスト基準</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;EntryCriteria">
+        <rdfs:subClassOf rdf:resource="&tp;TestCriteria"/>
+        <rdfs:label xml:lang="ja">開始基準</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;ExitCriteria">
+        <rdfs:subClassOf rdf:resource="&tp;TestCriteria"/>
+        <rdfs:label xml:lang="ja">終了基準</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;PassCriteria">
+        <rdfs:subClassOf rdf:resource="&tp;TestCriteria"/>
+        <rdfs:label xml:lang="ja">合格判定基準</rdfs:label>
+    </owl:Class>
+    
+    <!-- テスト体制 -->
+    <owl:Class rdf:about="&tp;TestOrganization">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テスト体制</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestRole">
+        <rdfs:subClassOf rdf:resource="&tp;TestOrganization"/>
+        <rdfs:label xml:lang="ja">テスト役割</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestResponsibility">
+        <rdfs:subClassOf rdf:resource="&tp;TestOrganization"/>
+        <rdfs:label xml:lang="ja">テスト責務</rdfs:label>
+    </owl:Class>
+    
+    <!-- テスト環境 -->
+    <owl:Class rdf:about="&tp;TestEnvironment">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テスト環境</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;HardwareEnvironment">
+        <rdfs:subClassOf rdf:resource="&tp;TestEnvironment"/>
+        <rdfs:label xml:lang="ja">ハードウェア環境</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;SoftwareEnvironment">
+        <rdfs:subClassOf rdf:resource="&tp;TestEnvironment"/>
+        <rdfs:label xml:lang="ja">ソフトウェア環境</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestData">
+        <rdfs:subClassOf rdf:resource="&tp;TestEnvironment"/>
+        <rdfs:label xml:lang="ja">テストデータ</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestTool">
+        <rdfs:subClassOf rdf:resource="&tp;TestEnvironment"/>
+        <rdfs:label xml:lang="ja">テストツール</rdfs:label>
+    </owl:Class>
+    
+    <!-- テストスケジュール -->
+    <owl:Class rdf:about="&tp;TestSchedule">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テストスケジュール</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestPhase">
+        <rdfs:subClassOf rdf:resource="&tp;TestSchedule"/>
+        <rdfs:label xml:lang="ja">テストフェーズ</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;TestMilestone">
+        <rdfs:subClassOf rdf:resource="&tp;TestSchedule"/>
+        <rdfs:label xml:lang="ja">テストマイルストーン</rdfs:label>
+    </owl:Class>
+    
+    <!-- テスト管理 -->
+    <owl:Class rdf:about="&tp;TestManagement">
+        <rdfs:subClassOf rdf:resource="&tp;TestPlanComponent"/>
+        <rdfs:label xml:lang="ja">テスト管理</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;DefectManagement">
+        <rdfs:subClassOf rdf:resource="&tp;TestManagement"/>
+        <rdfs:label xml:lang="ja">障害管理</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;ProgressManagement">
+        <rdfs:subClassOf rdf:resource="&tp;TestManagement"/>
+        <rdfs:label xml:lang="ja">進捗管理</rdfs:label>
+    </owl:Class>
+    
+    <owl:Class rdf:about="&tp;RiskManagement">
+        <rdfs:subClassOf rdf:resource="&tp;TestManagement"/>
+        <rdfs:label xml:lang="ja">リスク管理</rdfs:label>
+    </owl:Class>
+
+    <!-- ============================================ -->
+    <!-- Object Properties -->
+    <!-- ============================================ -->
+    
+    <owl:ObjectProperty rdf:about="&tp;hasTestLevel">
+        <rdfs:domain rdf:resource="&tp;TestPlanDocument"/>
+        <rdfs:range rdf:resource="&tp;TestLevel"/>
+        <rdfs:label xml:lang="ja">テストレベルを持つ</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&tp;hasTestType">
+        <rdfs:domain rdf:resource="&tp;TestLevel"/>
+        <rdfs:range rdf:resource="&tp;TestType"/>
+        <rdfs:label xml:lang="ja">テスト種別を持つ</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&tp;hasEntryCriteria">
+        <rdfs:domain rdf:resource="&tp;TestLevel"/>
+        <rdfs:range rdf:resource="&tp;EntryCriteria"/>
+        <rdfs:label xml:lang="ja">開始基準を持つ</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&tp;hasExitCriteria">
+        <rdfs:domain rdf:resource="&tp;TestLevel"/>
+        <rdfs:range rdf:resource="&tp;ExitCriteria"/>
+        <rdfs:label xml:lang="ja">終了基準を持つ</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&tp;requiresEnvironment">
+        <rdfs:domain rdf:resource="&tp;TestLevel"/>
+        <rdfs:range rdf:resource="&tp;TestEnvironment"/>
+        <rdfs:label xml:lang="ja">環境を要する</rdfs:label>
+    </owl:ObjectProperty>
+    
+    <owl:ObjectProperty rdf:about="&tp;precedesPhase">
+        <rdfs:domain rdf:resource="&tp;TestPhase"/>
+        <rdfs:range rdf:resource="&tp;TestPhase"/>
+        <rdfs:label xml:lang="ja">先行フェーズ</rdfs:label>
+    </owl:ObjectProperty>
+
+    <!-- ============================================ -->
+    <!-- Data Properties -->
+    <!-- ============================================ -->
+    
+    <owl:DatatypeProperty rdf:about="&tp;startDate">
+        <rdfs:domain rdf:resource="&tp;TestPhase"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+        <rdfs:label xml:lang="ja">開始日</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&tp;endDate">
+        <rdfs:domain rdf:resource="&tp;TestPhase"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+        <rdfs:label xml:lang="ja">終了日</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&tp;coverageTarget">
+        <rdfs:domain rdf:resource="&tp;PassCriteria"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+        <rdfs:label xml:lang="ja">カバレッジ目標</rdfs:label>
+    </owl:DatatypeProperty>
+    
+    <owl:DatatypeProperty rdf:about="&tp;defectDensityTarget">
+        <rdfs:domain rdf:resource="&tp;PassCriteria"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+        <rdfs:label xml:lang="ja">欠陥密度目標</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <!-- ============================================ -->
+    <!-- Individuals - Required Sections -->
+    <!-- ============================================ -->
+    
+    <owl:NamedIndividual rdf:about="&tp;RequiredSection_TestPolicy">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>1</sr:sectionNumber>
+        <sr:title xml:lang="ja">テスト方針</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;RequiredSection_TestScope">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>2</sr:sectionNumber>
+        <sr:title xml:lang="ja">テストスコープ</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;RequiredSection_TestLevels">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>3</sr:sectionNumber>
+        <sr:title xml:lang="ja">テストレベル定義</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;RequiredSection_TestSchedule">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>4</sr:sectionNumber>
+        <sr:title xml:lang="ja">テストスケジュール</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;RequiredSection_TestOrganization">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>5</sr:sectionNumber>
+        <sr:title xml:lang="ja">テスト体制</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;RequiredSection_TestEnvironment">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>6</sr:sectionNumber>
+        <sr:title xml:lang="ja">テスト環境</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;RequiredSection_TestManagement">
+        <rdf:type rdf:resource="&sr;Section"/>
+        <sr:sectionNumber>7</sr:sectionNumber>
+        <sr:title xml:lang="ja">テスト管理</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+
+    <!-- ============================================ -->
+    <!-- Individuals - Required Test Levels -->
+    <!-- ============================================ -->
+    
+    <owl:NamedIndividual rdf:about="&tp;Required_UnitTest">
+        <rdf:type rdf:resource="&tp;UnitTest"/>
+        <sr:title xml:lang="ja">単体テスト</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;Required_IntegrationTest">
+        <rdf:type rdf:resource="&tp;IntegrationTest"/>
+        <sr:title xml:lang="ja">結合テスト</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;Required_SystemTest">
+        <rdf:type rdf:resource="&tp;SystemTest"/>
+        <sr:title xml:lang="ja">システムテスト</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;Required_AcceptanceTest">
+        <rdf:type rdf:resource="&tp;AcceptanceTest"/>
+        <sr:title xml:lang="ja">受入テスト</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+
+    <!-- ============================================ -->
+    <!-- Individuals - Required Test Types -->
+    <!-- ============================================ -->
+    
+    <owl:NamedIndividual rdf:about="&tp;Required_FunctionalTest">
+        <rdf:type rdf:resource="&tp;FunctionalTest"/>
+        <sr:title xml:lang="ja">機能テスト</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;Required_PerformanceTest">
+        <rdf:type rdf:resource="&tp;PerformanceTest"/>
+        <sr:title xml:lang="ja">性能テスト</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="&tp;Required_SecurityTest">
+        <rdf:type rdf:resource="&tp;SecurityTest"/>
+        <sr:title xml:lang="ja">セキュリティテスト</sr:title>
+        <sr:isRequired rdf:datatype="&xsd;boolean">true</sr:isRequired>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

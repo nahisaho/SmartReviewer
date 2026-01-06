@@ -1,0 +1,138 @@
+{
+  "evaluation_id": "eval-ad8578023fa1",
+  "config": {
+    "name": "PoC-テスト計画書評価",
+    "dataset_id": "ds-test-plan-001",
+    "check_item_ids": null,
+    "parallel": true,
+    "repeat_count": 3,
+    "timeout_seconds": 300
+  },
+  "status": "completed",
+  "started_at": "2026-01-06T08:25:25.173764+00:00",
+  "completed_at": "2026-01-06T08:25:25.174448+00:00",
+  "document_results": [
+    {
+      "document_id": "tp-doc-001",
+      "document_name": "完全なテスト計画書",
+      "check_results": [
+        {
+          "check_item_id": "TP-001",
+          "document_id": "tp-doc-001",
+          "expected_result": "pass",
+          "actual_result": "pass",
+          "is_correct": true,
+          "expected_findings": [],
+          "actual_findings": [],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        }
+      ],
+      "total_checks": 1,
+      "correct_checks": 1,
+      "accuracy": 1.0,
+      "processing_time_ms": 0
+    },
+    {
+      "document_id": "tp-doc-002",
+      "document_name": "不完全なテスト計画書",
+      "check_results": [
+        {
+          "check_item_id": "TP-001",
+          "document_id": "tp-doc-002",
+          "expected_result": "fail",
+          "actual_result": "fail",
+          "is_correct": true,
+          "expected_findings": [
+            "必須セクション不足"
+          ],
+          "actual_findings": [
+            "必須セクション「テスト環境」が未記載",
+            "必須セクション「テストスケジュール」が未記載"
+          ],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        }
+      ],
+      "total_checks": 1,
+      "correct_checks": 1,
+      "accuracy": 1.0,
+      "processing_time_ms": 0
+    }
+  ],
+  "summary": {
+    "total_documents": 2,
+    "total_checks": 2,
+    "correct_checks": 2,
+    "true_positives": 1,
+    "false_positives": 0,
+    "true_negatives": 1,
+    "false_negatives": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "accuracy": 1.0,
+    "avg_processing_time_ms": 0.0,
+    "total_processing_time_ms": 0,
+    "consistency_rate": 1.0
+  },
+  "metrics": [
+    {
+      "metric_type": "precision",
+      "value": 1.0,
+      "details": {
+        "formula": "TP / (TP + FP)"
+      }
+    },
+    {
+      "metric_type": "recall",
+      "value": 1.0,
+      "details": {
+        "formula": "TP / (TP + FN)"
+      }
+    },
+    {
+      "metric_type": "f1_score",
+      "value": 1.0,
+      "details": {
+        "formula": "2 * (P * R) / (P + R)"
+      }
+    },
+    {
+      "metric_type": "accuracy",
+      "value": 1.0,
+      "details": {
+        "formula": "correct / total"
+      }
+    },
+    {
+      "metric_type": "processing_time",
+      "value": 0.0,
+      "details": {
+        "unit": "ms",
+        "total": 0
+      }
+    }
+  ],
+  "repeat_results": [
+    {
+      "run_number": 1,
+      "accuracy": 1.0,
+      "processing_time_ms": 0,
+      "results_hash": "dd567b438849cd4bdb3d0f1f3fa2c000"
+    },
+    {
+      "run_number": 2,
+      "accuracy": 1.0,
+      "processing_time_ms": 0,
+      "results_hash": "dd567b438849cd4bdb3d0f1f3fa2c000"
+    },
+    {
+      "run_number": 3,
+      "accuracy": 1.0,
+      "processing_time_ms": 0,
+      "results_hash": "dd567b438849cd4bdb3d0f1f3fa2c000"
+    }
+  ],
+  "error_message": null
+}

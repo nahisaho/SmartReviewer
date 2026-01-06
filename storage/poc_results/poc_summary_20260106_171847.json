@@ -1,0 +1,24 @@
+{
+  "execution_time": "2026-01-06T17:18:47.048598",
+  "total_processing_time": 0.004739522933959961,
+  "basic_design": {
+    "status": "completed",
+    "accuracy": 0.6666666666666666,
+    "precision": 0.6666666666666666,
+    "recall": 0.5,
+    "f1_score": 0.5714285714285715
+  },
+  "test_plan": {
+    "status": "completed",
+    "accuracy": 0.5,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1_score": 0.6666666666666666
+  },
+  "total": {
+    "accuracy": 0.6363636363636364,
+    "precision": 0.6,
+    "recall": 0.6,
+    "f1_score": 0.6
+  }
+}

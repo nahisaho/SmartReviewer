@@ -1,0 +1,162 @@
+{
+  "report_id": "analysis-20260106082159",
+  "created_at": "2026-01-06T08:21:59.020558+00:00",
+  "overall_accuracy": 0.6363636363636364,
+  "overall_precision": 0.6,
+  "overall_recall": 0.6,
+  "overall_f1_score": 0.6,
+  "error_analysis": [
+    {
+      "check_item_id": "TP-001",
+      "check_item_name": "TP-001",
+      "false_positive_count": 1,
+      "false_negative_count": 0,
+      "false_positive_examples": [
+        "tp-doc-001"
+      ],
+      "false_negative_examples": [],
+      "error_patterns": []
+    },
+    {
+      "check_item_id": "BD-001",
+      "check_item_name": "BD-001",
+      "false_positive_count": 0,
+      "false_negative_count": 2,
+      "false_positive_examples": [],
+      "false_negative_examples": [
+        "bd-doc-002",
+        "bd-doc-003"
+      ],
+      "error_patterns": []
+    },
+    {
+      "check_item_id": "BD-003",
+      "check_item_name": "BD-003",
+      "false_positive_count": 1,
+      "false_negative_count": 0,
+      "false_positive_examples": [
+        "bd-doc-003"
+      ],
+      "false_negative_examples": [],
+      "error_patterns": []
+    }
+  ],
+  "rag_comparisons": [],
+  "improvement_suggestions": [
+    {
+      "priority": "high",
+      "category": "prompt",
+      "description": "プロンプトチューニングによる精度向上",
+      "expected_impact": "Accuracy 80%以上達成",
+      "effort_estimate": "2-3日"
+    },
+    {
+      "priority": "high",
+      "category": "check_logic",
+      "description": "判定ロジックの厳密化",
+      "expected_impact": "Precision向上",
+      "effort_estimate": "2-3日"
+    },
+    {
+      "priority": "high",
+      "category": "check_logic",
+      "description": "判定条件の見直し",
+      "expected_impact": "Recall向上",
+      "effort_estimate": "2-3日"
+    },
+    {
+      "priority": "medium",
+      "category": "check_logic",
+      "description": "TP-001: False Positive削減 (1件)",
+      "expected_impact": "Precision向上",
+      "effort_estimate": "1-2日"
+    },
+    {
+      "priority": "medium",
+      "category": "check_logic",
+      "description": "BD-001: False Negative削減 (2件)",
+      "expected_impact": "Recall向上",
+      "effort_estimate": "1-2日"
+    },
+    {
+      "priority": "medium",
+      "category": "check_logic",
+      "description": "BD-003: False Positive削減 (1件)",
+      "expected_impact": "Precision向上",
+      "effort_estimate": "1-2日"
+    },
+    {
+      "priority": "medium",
+      "category": "rag",
+      "description": "LLM統合による高精度チェック",
+      "expected_impact": "全体精度10-20%向上",
+      "effort_estimate": "1週間"
+    }
+  ],
+  "check_item_analysis": {
+    "TP-001": {
+      "total_evaluations": 2,
+      "correct": 1,
+      "accuracy": 0.5,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1_score": 0.6666666666666666,
+      "true_positives": 1,
+      "true_negatives": 0,
+      "false_positives": 1,
+      "false_negatives": 0
+    },
+    "BD-001": {
+      "total_evaluations": 3,
+      "correct": 1,
+      "accuracy": 0.3333333333333333,
+      "precision": 0,
+      "recall": 0.0,
+      "f1_score": 0,
+      "true_positives": 0,
+      "true_negatives": 1,
+      "false_positives": 0,
+      "false_negatives": 2
+    },
+    "BD-002": {
+      "total_evaluations": 1,
+      "correct": 1,
+      "accuracy": 1.0,
+      "precision": 0,
+      "recall": 0,
+      "f1_score": 0,
+      "true_positives": 0,
+      "true_negatives": 1,
+      "false_positives": 0,
+      "false_negatives": 0
+    },
+    "BD-003": {
+      "total_evaluations": 3,
+      "correct": 2,
+      "accuracy": 0.6666666666666666,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1_score": 0.6666666666666666,
+      "true_positives": 1,
+      "true_negatives": 1,
+      "false_positives": 1,
+      "false_negatives": 0
+    },
+    "BD-004": {
+      "total_evaluations": 2,
+      "correct": 2,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "true_positives": 1,
+      "true_negatives": 1,
+      "false_positives": 0,
+      "false_negatives": 0
+    }
+  },
+  "reproducibility_rate": 1.0,
+  "reproducibility_notes": [
+    "全ての繰り返し実行で一貫した結果を確認"
+  ]
+}

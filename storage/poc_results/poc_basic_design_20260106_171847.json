@@ -1,0 +1,238 @@
+{
+  "evaluation_id": "eval-a6761c1f3e76",
+  "config": {
+    "name": "PoC-基本設計書評価",
+    "dataset_id": "ds-basic-design-001",
+    "check_item_ids": null,
+    "parallel": true,
+    "repeat_count": 3,
+    "timeout_seconds": 300
+  },
+  "status": "completed",
+  "started_at": "2026-01-06T08:18:47.043327+00:00",
+  "completed_at": "2026-01-06T08:18:47.045526+00:00",
+  "document_results": [
+    {
+      "document_id": "bd-doc-001",
+      "document_name": "完全な基本設計書",
+      "check_results": [
+        {
+          "check_item_id": "BD-001",
+          "document_id": "bd-doc-001",
+          "expected_result": "pass",
+          "actual_result": "pass",
+          "is_correct": true,
+          "expected_findings": [],
+          "actual_findings": [],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        },
+        {
+          "check_item_id": "BD-002",
+          "document_id": "bd-doc-001",
+          "expected_result": "pass",
+          "actual_result": "pass",
+          "is_correct": true,
+          "expected_findings": [],
+          "actual_findings": [],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        },
+        {
+          "check_item_id": "BD-003",
+          "document_id": "bd-doc-001",
+          "expected_result": "pass",
+          "actual_result": "pass",
+          "is_correct": true,
+          "expected_findings": [],
+          "actual_findings": [],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        },
+        {
+          "check_item_id": "BD-004",
+          "document_id": "bd-doc-001",
+          "expected_result": "pass",
+          "actual_result": "pass",
+          "is_correct": true,
+          "expected_findings": [],
+          "actual_findings": [],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        }
+      ],
+      "total_checks": 4,
+      "correct_checks": 4,
+      "accuracy": 1.0,
+      "processing_time_ms": 0
+    },
+    {
+      "document_id": "bd-doc-002",
+      "document_name": "不完全な基本設計書",
+      "check_results": [
+        {
+          "check_item_id": "BD-001",
+          "document_id": "bd-doc-002",
+          "expected_result": "fail",
+          "actual_result": "pass",
+          "is_correct": false,
+          "expected_findings": [
+            "必須セクション不足"
+          ],
+          "actual_findings": [],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        },
+        {
+          "check_item_id": "BD-003",
+          "document_id": "bd-doc-002",
+          "expected_result": "fail",
+          "actual_result": "fail",
+          "is_correct": true,
+          "expected_findings": [
+            "システム目的が不明確"
+          ],
+          "actual_findings": [
+            "必須セクション「機能設計」が見つかりません",
+            "必須セクション「データ設計」が見つかりません",
+            "必須セクション「インターフェース設計」が見つかりません"
+          ],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        },
+        {
+          "check_item_id": "BD-004",
+          "document_id": "bd-doc-002",
+          "expected_result": "fail",
+          "actual_result": "fail",
+          "is_correct": true,
+          "expected_findings": [
+            "システム構成図がない"
+          ],
+          "actual_findings": [
+            "必須セクション「機能設計」が見つかりません",
+            "必須セクション「データ設計」が見つかりません",
+            "必須セクション「インターフェース設計」が見つかりません"
+          ],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        }
+      ],
+      "total_checks": 3,
+      "correct_checks": 2,
+      "accuracy": 0.6666666666666666,
+      "processing_time_ms": 0
+    },
+    {
+      "document_id": "bd-doc-003",
+      "document_name": "部分的な基本設計書",
+      "check_results": [
+        {
+          "check_item_id": "BD-001",
+          "document_id": "bd-doc-003",
+          "expected_result": "fail",
+          "actual_result": "pass",
+          "is_correct": false,
+          "expected_findings": [
+            "インターフェース設計セクションがない"
+          ],
+          "actual_findings": [],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        },
+        {
+          "check_item_id": "BD-003",
+          "document_id": "bd-doc-003",
+          "expected_result": "pass",
+          "actual_result": "fail",
+          "is_correct": false,
+          "expected_findings": [],
+          "actual_findings": [
+            "必須セクション「インターフェース設計」が見つかりません"
+          ],
+          "finding_match_count": 0,
+          "processing_time_ms": 0
+        }
+      ],
+      "total_checks": 2,
+      "correct_checks": 0,
+      "accuracy": 0.0,
+      "processing_time_ms": 0
+    }
+  ],
+  "summary": {
+    "total_documents": 3,
+    "total_checks": 9,
+    "correct_checks": 6,
+    "true_positives": 2,
+    "false_positives": 1,
+    "true_negatives": 4,
+    "false_negatives": 2,
+    "precision": 0.6666666666666666,
+    "recall": 0.5,
+    "f1_score": 0.5714285714285715,
+    "accuracy": 0.6666666666666666,
+    "avg_processing_time_ms": 0.0,
+    "total_processing_time_ms": 0,
+    "consistency_rate": 1.0
+  },
+  "metrics": [
+    {
+      "metric_type": "precision",
+      "value": 0.6666666666666666,
+      "details": {
+        "formula": "TP / (TP + FP)"
+      }
+    },
+    {
+      "metric_type": "recall",
+      "value": 0.5,
+      "details": {
+        "formula": "TP / (TP + FN)"
+      }
+    },
+    {
+      "metric_type": "f1_score",
+      "value": 0.5714285714285715,
+      "details": {
+        "formula": "2 * (P * R) / (P + R)"
+      }
+    },
+    {
+      "metric_type": "accuracy",
+      "value": 0.6666666666666666,
+      "details": {
+        "formula": "correct / total"
+      }
+    },
+    {
+      "metric_type": "processing_time",
+      "value": 0.0,
+      "details": {
+        "unit": "ms",
+        "total": 0
+      }
+    }
+  ],
+  "repeat_results": [
+    {
+      "run_number": 1,
+      "accuracy": 0.6666666666666666,
+      "processing_time_ms": 0,
+      "results_hash": "ad4f643cf24c9282e8c5e284eed62c4c"
+    },
+    {
+      "run_number": 2,
+      "accuracy": 0.6666666666666666,
+      "processing_time_ms": 0,
+      "results_hash": "ad4f643cf24c9282e8c5e284eed62c4c"
+    },
+    {
+      "run_number": 3,
+      "accuracy": 0.6666666666666666,
+      "processing_time_ms": 0,
+      "results_hash": "ad4f643cf24c9282e8c5e284eed62c4c"
+    }
+  ],
+  "error_message": null
+}

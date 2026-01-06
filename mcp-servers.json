@@ -1,0 +1,33 @@
+{
+  "servers": {
+    "smartreviewer-core": {
+      "name": "smartreviewer-core",
+      "command": "python",
+      "args": ["-m", "src.servers.core.server"],
+      "env": {},
+      "port": 8001,
+      "enabled": true,
+      "transport": "stdio"
+    },
+    "smartreviewer-rag": {
+      "name": "smartreviewer-rag",
+      "command": "python",
+      "args": ["-m", "src.servers.rag.server"],
+      "env": {},
+      "port": 8002,
+      "enabled": true,
+      "transport": "stdio"
+    },
+    "smartreviewer-knowledge": {
+      "name": "smartreviewer-knowledge",
+      "command": "python",
+      "args": ["-m", "src.servers.knowledge.server"],
+      "env": {},
+      "port": 8003,
+      "enabled": true,
+      "transport": "stdio"
+    }
+  },
+  "default_timeout": 30,
+  "log_level": "INFO"
+}

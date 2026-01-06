@@ -1,0 +1,122 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "smartreviewer"
+version = "0.1.0"
+description = "Document Review AI Agent with MCP-based Neuro-Symbolic Architecture"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Proprietary"
+authors = [
+    { name = "SmartReviewer Team" }
+]
+keywords = ["mcp", "document-review", "ai", "neuro-symbolic", "rag"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    # MCP SDK
+    "mcp>=1.0.0",
+    "fastmcp>=0.1.0",
+    # Vector DB
+    "qdrant-client>=1.7.0",
+    # Graph DB
+    "neo4j>=5.15.0",
+    # Object Storage
+    "minio>=7.2.0",
+    # Embeddings
+    "sentence-transformers>=2.2.0",
+    # Document Processing
+    "pypdf>=3.17.0",
+    "python-docx>=1.1.0",
+    "unstructured>=0.12.0",
+    # RDF/OWL
+    "rdflib>=7.0.0",
+    "owlready2>=0.45",
+    # Utilities
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "httpx>=0.25.0",
+    "python-dotenv>=1.0.0",
+    "structlog>=24.1.0",
+    "typer>=0.9.0",
+    "rich>=13.7.0",
+    # Async
+    "anyio>=4.2.0",
+    "aiofiles>=23.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "mypy>=1.8.0",
+    "ruff>=0.1.9",
+    "pre-commit>=3.6.0",
+]
+
+[project.scripts]
+smartreviewer = "smartreviewer.cli:main"
+
+[project.entry-points."mcp.servers"]
+smartreviewer-core = "smartreviewer.servers.core:serve"
+smartreviewer-rag = "smartreviewer.servers.rag:serve"
+smartreviewer-knowledge = "smartreviewer.servers.knowledge:serve"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/smartreviewer"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long (handled by formatter)
+]
+
+[tool.ruff.isort]
+known-first-party = ["smartreviewer"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-v --cov=src --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
